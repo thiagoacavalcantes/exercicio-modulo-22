@@ -14,8 +14,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
+          - name: Install dependencies and Cypress
+  run: |
+    npm install
+    npx cypress install
+
+      - uses: cypress-io/github-action@v6
         continue-on-error: true
         with:
           install-command: npm install
