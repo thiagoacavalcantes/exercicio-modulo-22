@@ -4,7 +4,8 @@ module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
     reportDir: "cypress/reports/mochawesome",
-    overwrite: false,
+    overwrite: true,
+    reportFilename: "index.html",
     html: true,  // Garante que o HTML será gerado
     json: false,  // Impede a geração do JSON
     charts: true, // Adiciona gráficos interativos
