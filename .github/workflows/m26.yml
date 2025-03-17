@@ -2,7 +2,7 @@ name: EBAC -EXERCICO 26
 
 on:
   push:
-    branches: [ci]
+    branches: [m26]
   workflow_dispatch:
 
 jobs:
