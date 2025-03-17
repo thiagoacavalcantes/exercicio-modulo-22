@@ -14,6 +14,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Install dependencies
+        run: npm install
+      - name: Fix Cypress permissions
+        run: npx cypress install && chmod +x node_modules/.bin/cypress
       - name: Cypress run
         uses: cypress-io/github-action@v6
         continue-on-error: true
@@ -24,5 +28,5 @@ jobs:
       - name: Publish Report
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           publish_dir: ./mochawesome
