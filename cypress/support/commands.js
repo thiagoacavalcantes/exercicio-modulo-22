@@ -51,10 +51,46 @@ Cypress.Commands.add('carrinho', (email, senha) => {
     cy.get('[style="padding: 8px;"] > :nth-child(1) > .r-18u37iz > :nth-child(1) > [data-testid="productDetails"]').click()
     cy.get('[data-testid="addToCart"]').click()
     cy.get('[data-testid="selectAddressOrContinueToPayment"]').click()
-    cy.get('[data-testid="completeCheckout"]').click()
-    
-    
-    
-    
+    cy.get('[data-testid="completeCheckout"]').click()  
+ })
 
+ Cypress.Commands.add('buyProduct', () => { 
+    cy.setCookie('ebacStoreVersion', 'v2', { domain: 'lojaebac.ebaconline.art.br'})
+    cy.visit('/')
+    cy.get('[href="/Tab/Account"]').click()
+    cy.get('[data-testid="email"]').type('teste@qa.ebac.br')
+    cy.get('[data-testid="password"]').type('Teste@123')
+    cy.get('[data-testid="btnLogin"]').click()
+    cy.get('[href="/Tab/Browse"]').click()
+    cy.get(':nth-child(3) > .r-18u37iz > :nth-child(2) > [data-testid="productDetails"]').click()
+    cy.get('[data-testid="addToCart"]').click()    
+    cy.get('[data-testid="productName"]').should('contain', 'Camiseta EBAC') 
+ })
+
+ Cypress.Commands.add('removeProduct', () => { 
+    cy.setCookie('ebacStoreVersion', 'v2', { domain: 'lojaebac.ebaconline.art.br'})
+    cy.visit('/')
+    cy.get('[href="/Tab/Account"]').click()
+    cy.get('[data-testid="email"]').type('teste@qa.ebac.br')
+    cy.get('[data-testid="password"]').type('Teste@123')
+    cy.get('[data-testid="btnLogin"]').click()
+    cy.get('[href="/Tab/Browse"]').click()
+    cy.get(':nth-child(3) > .r-18u37iz > :nth-child(2) > [data-testid="productDetails"]').click()
+    cy.get('[data-testid="addToCart"]').click()
+    cy.get('[data-testid="remove"]').click()      
+    cy.get('[data-testid="emptyCart"]').should('contain', 'Your cart is empty')
+ })
+
+ Cypress.Commands.add('updateProduct', () => { 
+    cy.setCookie('ebacStoreVersion', 'v2', { domain: 'lojaebac.ebaconline.art.br'})
+    cy.visit('/')
+    cy.get('[href="/Tab/Account"]').click()
+    cy.get('[data-testid="email"]').type('teste@qa.ebac.br')
+    cy.get('[data-testid="password"]').type('Teste@123')
+    cy.get('[data-testid="btnLogin"]').click()
+    cy.get('[href="/Tab/Browse"]').click()
+    cy.get(':nth-child(3) > .r-18u37iz > :nth-child(2) > [data-testid="productDetails"]').click()
+    cy.get('[data-testid="addToCart"]').click() 
+    cy.get('[data-testid="addItem"]').click() 
+    cy.get('[data-testid="itemsQty"]').should('contain', '2')
  })
