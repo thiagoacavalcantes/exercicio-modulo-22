@@ -24,10 +24,4 @@ services:
     depends_on:
       - banco
   
-  test:
-    build:
-      context: .
-    depends_on:
-      - banco
-      - loja
-    command: sh -c "npm run wdio"
+  

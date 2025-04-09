@@ -9,5 +9,6 @@ COPY . /home/cypress/
 VOLUME [ "/home/cypress/reports/mochawesome" ]
 
 RUN npm install
+RUN npx cypress install
 
-CMD ["npm", "run", "test:npx cypress run"]
+CMD ["npm", "run", "test"]
