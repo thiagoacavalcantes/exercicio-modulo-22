@@ -1,0 +1,5 @@
+# Ignorar arquivos específicos
+config.json
+
+# Ignorar pastas
+node_modules/
